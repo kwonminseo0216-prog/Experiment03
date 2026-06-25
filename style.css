@@ -1,0 +1,166 @@
+:root {
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --primary-color: #4f46e5;
+    --secondary-color: #10b981;
+    --border-color: #e5e7eb;
+    --accent-color: #ef4444;
+}
+
+[data-theme="dark"] {
+    --bg-color: #111827;
+    --card-bg: #1f2937;
+    --text-color: #f9fafb;
+    --border-color: #374151;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+.text-areas {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.input-box { flex: 1; }
+textarea { height: 200px; resize: vertical; }
+
+.upload-zone {
+    border: 2px dashed var(--primary-color);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+button {
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.btn-primary { background: var(--primary-color); color: white; }
+.btn-secondary { background: var(--secondary-color); color: white; }
+.btn-sm { padding: 0.4rem 0.8rem; font-size: 0.85rem; margin-right: 0.25rem; }
+
+/* 메인 레이아웃 구상 */
+.main-layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .main-layout { grid-template-columns: 1fr; }
+}
+
+/* 탭 메뉴 UI */
+.tab-menu {
+    display: flex;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 1rem;
+    overflow-x: auto;
+}
+.tab-btn {
+    background: none;
+    color: var(--text-color);
+    padding: 0.75rem 1.2rem;
+    border-radius: 0;
+    border-bottom: 3px solid transparent;
+}
+.tab-btn.active {
+    border-bottom-color: var(--primary-color);
+    color: var(--primary-color);
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* 유틸리티 디테일 */
+.hidden { display: none !important; }
+#loadingOverlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.5); display: flex; flex-direction: column;
+    justify-content: center; align-items: center; color: white; z-index: 9999;
+}
+.spinner {
+    width: 50px; height: 50px; border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color); border-radius: 50%;
+    animation: spin 1s linear infinite; margin-bottom: 1rem;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.highlight-zone mark { background-color: #fef08a; cursor: pointer; border-radius: 2px; }
+[data-theme="dark"] .highlight-zone mark { background-color: #854d0e; color: white; }
+
+.svg-container { background: #fafafa; border: 1px solid var(--border-color); border-radius: 8px; overflow: auto; }
+[data-theme="dark"] .svg-container { background: #111827; }
+
+.chart-container { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+.chart-container canvas { max-width: 48%; min-width: 280px; }
+
+.wordcloud-box { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; }
+.chat-box { height: 150px; overflow-y: auto; border: 1px solid var(--border-color); padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 4px; }
+
